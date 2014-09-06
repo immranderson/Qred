@@ -1,22 +1,22 @@
 package com.qred.android;
 
-import java.util.Locale;
-
-import android.app.Activity;
 import android.app.ActionBar;
+import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.support.v13.app.FragmentPagerAdapter;
 import android.os.Bundle;
+import android.support.v13.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+
+import com.qred.android.profile.ProfileFragment;
+
+import java.util.Locale;
 
 
 public class MainActivity extends Activity implements ActionBar.TabListener {
@@ -125,7 +125,14 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
-            return PlaceholderFragment.newInstance(position + 1);
+
+            switch (position) {
+
+                case 0:
+                    return ProfileFragment.newInstance(0);
+                default:
+                    return ProfileFragment.newInstance(0);
+            }
         }
 
         @Override
@@ -139,11 +146,11 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
             Locale l = Locale.getDefault();
             switch (position) {
                 case 0:
-                    return getString(R.string.title_section1).toUpperCase(l);
+                    return "profile".toUpperCase();
                 case 1:
-                    return getString(R.string.title_section2).toUpperCase(l);
+                    return "give cred".toUpperCase();
                 case 2:
-                    return getString(R.string.title_section3).toUpperCase(l);
+                    return "expolore".toUpperCase();
             }
             return null;
         }
