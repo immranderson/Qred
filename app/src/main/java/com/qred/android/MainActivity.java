@@ -151,7 +151,7 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
                 case 0:
                     return "profile".toUpperCase();
                 case 1:
-                    return "give cred".toUpperCase();
+                    return "give qred".toUpperCase();
                 case 2:
                     return "explore".toUpperCase();
             }

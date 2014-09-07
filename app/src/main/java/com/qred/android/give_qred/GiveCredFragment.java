@@ -6,8 +6,11 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.qred.android.R;
 import com.qred.android.profile.Category;
@@ -32,12 +35,10 @@ public class GiveCredFragment extends Fragment {
 
         mCategories = new ArrayList<Category>();
 
-        mCategories.add(new Category("Hello", "Hello", 1));
-        mCategories.add(new Category("Hello", "Hello", 1));
-        mCategories.add(new Category("Hello", "Hello", 1));
-        mCategories.add(new Category("Hello", "Hello", 1));
-        mCategories.add(new Category("Hello", "Hello", 1));
-
+        mCategories.add(new Category("Cool", "Hello", R.drawable.ic_cool));
+        mCategories.add(new Category("Funny", "Hello", R.drawable.ic_funny));
+        mCategories.add(new Category("Fashion", "Hello", R.drawable.ic_fashionable));
+        mCategories.add(new Category("Celebrity", "Hello", R.drawable.ic_celebrity));
 
         View view = inflater.inflate(R.layout.fragment_give_qred, container, false);
 
@@ -45,6 +46,17 @@ public class GiveCredFragment extends Fragment {
         mGridView = (GridView) view.findViewById(R.id.give_cred_gv);
 
         mGridView.setAdapter(mGiveCredBadgesAdapter);
+
+        mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Category selectedCategory = mGiveCredBadgesAdapter.getItem(position);
+
+                GiveQredPointsDialogFragment giveQredPointsDialogFragment = GiveQredPointsDialogFragment.newInstance(selectedCategory);
+
+                giveQredPointsDialogFragment.show(getFragmentManager(), "TAG");
+            }
+        });
 
         return view;
     }
@@ -79,6 +91,14 @@ public class GiveCredFragment extends Fragment {
 
             View view = LayoutInflater.from(getActivity()).inflate(R.layout.item_cred_badge, parent, false);
 
+            Category category = categories.get(position);
+
+            ImageView badgeImageView = (ImageView) view.findViewById(R.id.cred_badge_iv);
+            TextView badgeTextView = (TextView) view.findViewById(R.id.cred_badge_tv);
+
+
+            badgeImageView.setImageResource(category.getIcon());
+            badgeTextView.setText(category.getName());
 
             return view;
         }
