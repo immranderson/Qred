@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.qred.android.give_qred.GiveCredFragment;
 import com.qred.android.profile.ProfileFragment;
 
 import java.util.Locale;
@@ -130,6 +131,8 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
 
                 case 0:
                     return ProfileFragment.newInstance(0);
+                case 1:
+                    return new GiveCredFragment();
                 default:
                     return ProfileFragment.newInstance(0);
             }
@@ -150,7 +153,7 @@ public class MainActivity extends Activity implements ActionBar.TabListener {
                 case 1:
                     return "give cred".toUpperCase();
                 case 2:
-                    return "expolore".toUpperCase();
+                    return "explore".toUpperCase();
             }
             return null;
         }

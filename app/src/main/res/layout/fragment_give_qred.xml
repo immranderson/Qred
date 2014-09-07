@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/give_qred_friend_iv"
+        android:layout_width="match_parent"
+        android:layout_height="175dp"
+        android:layout_alignParentTop="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/miki"
+        />
+
+    <GridView
+        android:id="@+id/give_cred_gv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:numColumns="3"
+        android:layout_below="@+id/give_qred_friend_iv"
+        >
+
+        </GridView>
+
+
+</RelativeLayout>
